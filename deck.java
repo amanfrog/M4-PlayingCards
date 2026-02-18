@@ -3,7 +3,7 @@ import java.util.Collections; // imported utility class that has the shuffle met
 import java.util.List; // imports te list interface type for cards
 
 // Class defines a full deck of playing cards
-public class Deck { 
+class Deck { 
     private final List<Card> cards; // private var that stores all cards in the deck
 
     // This constructor will create all 52 cards
