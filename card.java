@@ -1,7 +1,7 @@
 import javax.swing.ImageIcon; 
 // This imports Swing class which is used to load and display card image files(UNTESTED)
 
-public class Card { 
+class Card { 
 
     private final String rank; // This will store card ranks (A, 2, K, etc)
     private final String suit; // This will store the clubs, diamonds, hearts, or spades types
