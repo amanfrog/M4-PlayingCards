@@ -1,14 +1,16 @@
-import javax.swing.*; // imports Swing GUI classes
-import java.awt.*; // imports UI base classes like layouts and events
+import java.awt.*; // imports Swing GUI classes
+import javax.swing.*; // imports UI base classes like layouts and events
 
 // This is the main window for the displaying and shuffling of cards
-public class MainFrame extends JFrame { 
+class MainFrame extends JFrame { 
+    private static final int CARD_WIDTH = 80;
+    private static final int CARD_HEIGHT = 120;
     private final Deck deck; // private var that holds the deck model
     private final JPanel cardsPanel; // private var of the panel where the card images are rendered(UNTESTED)
 
     // This constructor helps set up the UI components/behavior
     public MainFrame() { 
-        super("Poker Cards - Shuffle Demo"); // Sets window title
+        super("Playing Cards - Shuffle"); // Sets window title
 
         deck = new Deck("images"); // Here the deck is made by using image files in "images" folder
         cardsPanel = new JPanel(new GridLayout(4, 13, 6, 6)); // 4x13 grid with spacing between cards
@@ -26,7 +28,7 @@ public class MainFrame extends JFrame {
         renderCards(); // THe main render when the window is first madee
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exit when the window closes
-        setSize(1300, 750); // window size
+        setSize(1200, 600); // window size tuned to fit 52 scaled cards
         setLocationRelativeTo(null); // window centered
     }
 
@@ -36,7 +38,8 @@ public class MainFrame extends JFrame {
 
         // For loop that iterates through every card in deck
         for (Card card : deck.getCards()) { 
-            JLabel cardLabel = new JLabel(card.getIcon()); // this creates the label showing the card image
+            Image scaledImage = card.getIcon().getImage().getScaledInstance(CARD_WIDTH, CARD_HEIGHT, Image.SCALE_SMOOTH);
+            JLabel cardLabel = new JLabel(new ImageIcon(scaledImage)); // this creates the label showing a scaled card image
             cardLabel.setToolTipText(card.getDisplayName()); // this adds for example "Q of hearts"
             cardsPanel.add(cardLabel); // this adds a label to grid panel
         }
