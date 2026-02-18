@@ -17,7 +17,7 @@ public class Deck {
 
             // For loop that iterates through each rank depending on the current suit/card type
             for (String rank : ranks) { 
-                String filePath = imageFolder + "/" + rank + "_of_" + suit + ".png"; // image filename creation
+                String filePath = imageFolder + "/" + rank + "_of_" + suit + ".jpg"; // image filename creation
                 cards.add(new Card(rank, suit, filePath)); // This creates/stores a new 'Card' object
             }
         }
